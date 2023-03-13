@@ -1,0 +1,11 @@
+.recipes:hover {
+    color: blue !important;
+}
+
+.bookmarked:hover {
+    color: blue !important;
+}
+
+.liked:hover {
+    color: blue !important;
+}
