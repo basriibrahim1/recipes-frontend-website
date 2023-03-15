@@ -22,7 +22,8 @@ function App() {
       <Route path='/login' element={<Login />}/> 
       <Route path='/register' element={<Register />}/> 
       <Route path='/forgotPassword' element={<ForgotPassword />}/> 
-      <Route path='/menu' element={<Menu />}/> 
+      <Route path='/menu' element={<Menu />}/>
+      <Route path='/detailMenu/:id' element={<DetailMenu />}/>
       <Route path='/add-menu' element={<AddMenu />}/>
       <Route path='/editmenu/:id' element={< EditMenu />}/>
       <Route path='/menu/:id' element={<DetailMenu />}/>

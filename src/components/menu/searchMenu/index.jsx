@@ -10,8 +10,26 @@ const MenuComponent = () => {
 
   
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('')
+  const [sort, setSort] = useState('')
+  
 
-  useEffect(() => {
+  const handleText = (e) => {
+    if(!e.target.value){
+     getData()
+    }
+    setSearch(e.target.value)
+  }
+
+
+  const handleSearch = () => {
+    axios.get(`${process.env.REACT_APP_URL}query?search=${search}`)
+    .then(res => setData(res.data.data))
+    .catch(err => console.log(err))
+  }
+
+
+  const getData = () => {
     axios.get(process.env.REACT_APP_URL)
     .then((res) => {
       setData(res.data.data);
@@ -19,24 +37,61 @@ const MenuComponent = () => {
     .catch((err) => {
       console.log(err);
     });
-  }, []);
+  }
+
+  const handleSort = () => {
+    setSort('desc')
+    axios.get(process.env.REACT_APP_URL + `query?sort=${sort}`)
+    .then((res) => {
+      setData(res.data.data);
+    })
+    .catch((err) => console.log(err));
+
+
+    if(sort === 'desc'){
+      setSort('asc');
+      axios.get(process.env.REACT_APP_URL + `query?sort=${sort}`)
+        .then((res) => {
+          setData(res.data.data);
+          
+        })
+        .catch((err) => console.log(err));
+      }
+      if (sort === 'asc') {
+        setSort('desc')
+        axios.get(process.env.REACT_APP_URL + `query?sort=${sort}`)
+        .then((res) => {
+          setData(res.data.data);
+          
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+
+
+  useEffect(() => {
+    getData()
+    
+  },[]);
 
 
   return (
     <>
       <NavbarComponent />
-
+        
+      
       <div className="mt-5 container d-flex flex-column">
         <h1 className="pt-5 pb-5 col-lg-4 col-12 align-items-lg-start text-center text-md-start align-items-center">Discover Recipe & Delicious Food</h1>
         <div className="d-flex flex-column">
           <div className="d-flex flex-lg-row flex-column align-items-center justify-content-center">
-            <input className="form-control me-0 me-lg-4" id="search" name="search" type="text" placeholder="Search" />
-            <button className="button-search bg-warning p-2 border-0 mt-lg-0 mt-2">Search</button>
+            <input className="form-control me-0 me-lg-4" onChange={handleText} id="search" name="search" type="text" placeholder="Search" />
+            <button className="button-search bg-warning p-2 border-0 mt-lg-0 mt-2" onClick={handleSearch}>Search</button>
           </div>
           <div className="category d-flex flex-row mt-5 align-items-lg-start justify-content-center text-center">
             <div className="row col-12">
               <div className="col-xl-2 col-md-6 col-12">
-                <button className="btn-category border-0 bg-warning rounded px-5 py-2">New</button>
+                <button onClick={() => handleSort()} className="btn-category border-0 bg-warning rounded px-5 py-2">New</button>
               </div>
               <div className="col-xl-2 col-md-6  col-12 mt-md-0 mt-3">
                 <button className="btn-category border-0 bg-warning rounded px-5 py-2">Popular</button>
@@ -52,14 +107,17 @@ const MenuComponent = () => {
         </div>
       </div>
 
+
+      
       {data?.map((item) => {
 
-        return (
-          <div key={item.id} className="container d-flex flex-column mt-5 text-lg-start mb-5">
+          return (
+      
+         <div className="container d-flex flex-column mt-5 text-lg-start mb-5" key={item.id}>
             <div className="d-flex flex-lg-row flex-column align-items-center text-center mt-5 mb-5">
               <img className="food-product w-50" src={item.photo} alt="img" />
               <div className="d-flex flex-column ms-5 align-items-lg-start align-items-center text-start">
-                <Link to={`/menu-detail/${item.id}`} className="title-link text-black text-decoration-none">
+                <Link to={'/detailMenu/'+ item.id} className="title-link text-black text-decoration-none">
                   <h3>{item.title}</h3>
                 </Link>
                 <p className="mt-3">Ingredients:</p>
