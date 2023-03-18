@@ -1,11 +1,14 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import addMenuAction from "../../../storages/action/menu/addMenu";
 import Footer from "../../../utils";
 import CreateModals from "../../../utils/modals/modalsCreate";
 import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
 
 const AddMenuComponent = () => {
-
+  const dispatch = useDispatch()
+  const name = localStorage.getItem('name')
   const [show, setShow] = useState(false)
 
   const Open = () => setShow(true)
@@ -40,37 +43,30 @@ const AddMenuComponent = () => {
     setPhoto(e.target.files[0]);
   };
 
-  const postForm = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", inputData.title);
-    formData.append("ingredients", inputData.ingredients);
-    formData.append("category_id", inputData.category_id);
-    formData.append("photo", photo);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-    axios.post(process.env.REACT_APP_URL, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Authorization": process.env.REACT_APP_TOKEN,
-        },
-      })
-      .then((res) => {
-        handleShow()
-      })
-      .catch((err) => {
-        console.log("input data fail");
-        console.log(err);
-      });
-  };
+    const formData = new FormData()
+    formData.append("title", inputData.title)
+    formData.append("ingredients", inputData.ingredients)
+    formData.append("category_id", inputData.category_id)
+    formData.append("photo", photo)
+
+    
+    await dispatch(addMenuAction(formData))
+    
+    handleShow()
+  
+  }
   return (
     <>
-      <NavbarProfileComponent />
+      {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
 
       <div className="container mt-5">
-        <form onSubmit={postForm}>
+        <form onSubmit={handleSubmit}>
           <div className="form-group d-flex flex-column">
             <div className="text-center align-items-center justify-content-center">
-            <img className="" style={{width: '400px', height: '250px'}} src={!image ? '' : image} alt="" />
+              {photo && <img className="" style={{width: '400px', height: '250px'}} src={!image ? '' : image} alt="" />}
             </div>
             <label className="form-control-label" for="photo">
               Add Photo

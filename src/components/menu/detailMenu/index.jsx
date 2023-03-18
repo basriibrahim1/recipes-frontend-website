@@ -1,36 +1,43 @@
-import axios from "axios"
-import React, { useEffect, useState} from "react";
+import React, { useEffect} from "react";
 import Footer from "../../../utils";
 import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
 import BookmarkIcon from '../../../assets/bookmark.png'
 import LikeIcon from '../../../assets/Like.png'
 import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import idMenuAction from "../../../storages/action/menu/idMenuAction";
+import person from '../../../assets/person.jpg'
+
 
 const DetailMenuComponent = () => {
   const {id} = useParams()
+  const name = localStorage.getItem('name')
 
-  const [data, setData] = useState()
+  const dispatch = useDispatch()
+
+
+  const data = useSelector(state => state.menuId.data || state.menuId)
+
 
   useEffect(() => {
-     axios.get(`https://grumpy-onesies-cod.cyclic.app/recipes/${id}`)
-     .then(res => {
-         setData(res.data.data)
-     })
-     .catch(err => console.log(err))
-  },[id])
+    dispatch(idMenuAction(id))
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },[dispatch, id])
 
   
 
   return (
     <>
-      <NavbarProfileComponent />
+      {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
 
+      
       {data?.map(item => {
         return (
         <div className="container pt-5" key={item.id}>
         <div className="d-flex pt-4 justify-content-between" >
           <div className="border-img border-start border-5 border-warning ps-3 d-flex">
-            <img className="profile-recipes me-3 mt-3" src="img"  alt="img" />
+            <img className="profile-recipes me-3 mt-3" style={{width: '60px', height: '50px'}} src={person}  alt="img" />
             <div className="d-flex flex-column pt-2 text-center">
               <p className="">
                 <a className="text-decoration-none text-secondary" href="./detailMenu.html">

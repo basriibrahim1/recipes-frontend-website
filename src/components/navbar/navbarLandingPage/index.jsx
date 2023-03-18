@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const NavbarLandingPage = () => {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg">
+      <Navbar collapseOnSelect expand="lg" className='mt-5'>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-5 mt-2" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-between ms-5">
           <Nav>

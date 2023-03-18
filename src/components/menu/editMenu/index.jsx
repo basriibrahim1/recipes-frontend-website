@@ -1,43 +1,59 @@
 import React, {useEffect, useState} from "react";
 import Footer from "../../../utils";
 import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import './style.css'
 import EditModals from "../../../utils/modals/modalsEdit";
+import { useDispatch, useSelector } from "react-redux";
+import editMenuAction from "../../../storages/action/menu/editMenuAction";
+import idMenuAction from "../../../storages/action/menu/idMenuAction";
 
 
 const EditMenuComponent = () => {
-
-  const { id } = useParams();
-
+  
   const [show, setShow] = useState(false)
-
+  
   const Open = () => setShow(true)
   const Close = () => setShow(false)
-
+  
   const handleShow = () => {
-     Open()
+    Open()
   }
+  
+  const { id } = useParams();
+  const name = localStorage.getItem('name')
+  const dispatch = useDispatch()
 
-  const [data, setData] = useState({})
+
+  const menuId = useSelector(state => {
+    if (state.menuId.data.length > 0) {
+      return state.menuId.data[0];
+    } else {
+      return {
+        title: '',
+        ingredients: '',
+        category_id: ''
+      };
+    }
+  });
+ 
+
   const [editData, setEditData] = useState({
-    title: data.title || '',
-    ingredients: data.ingredients || '' ,
-    category_id: data.category_id || ''
+    title: menuId?.title ||'',
+    ingredients: menuId?.ingredients || '',
+    category_id: menuId?.category_id || '',
   })
-  const [photo, setPhoto] = useState('')
-  const [image, setImage] = useState('')
+
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_URL + id)
-    .then((res) => {
-      setData(res.data.data[0])
-      setEditData(res.data.data[0])
-    })
-    .catch((err) => console.log(err))
-  },[id])
-
+    dispatch(idMenuAction(id))
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },[dispatch, id])
+  
+  
+  const [photo, setPhoto] = useState('')
+  const [image, setImage] = useState('')
 
   const handleEdit = (e) => {
     setEditData({
@@ -57,7 +73,7 @@ const EditMenuComponent = () => {
   }
   
 
-  const SubmitForm = (e) => {
+  const SubmitForm = async (e) => {
     e.preventDefault()
     const editForm =  new FormData()
     editForm.append('title', editData.title)
@@ -65,35 +81,19 @@ const EditMenuComponent = () => {
     editForm.append('category_id', editData.category_id)
     editForm.append('photo', photo)
 
-
-    console.log(process.env.REACT_APP_URL + id)
-    axios.put(process.env.REACT_APP_URL + id, editForm, {
-      headers:{
-        "Content-Type": "multipart/form-data",
-        "Authorization" : process.env.REACT_APP_TOKEN
-      }
-    })
-
-    .then((res) => {
-      handleShow()
-    })
-    .catch((err) => {
-      alert('failed to edit data')
-      console.log(err.response)
-    })
-    
-    
+    await dispatch(editMenuAction(editForm,id))
+    handleShow()
   }
   
   return (
     <>
-      <NavbarProfileComponent />
+      {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
 
       <div className="container pt-5 w-50 text-center">
         <form onSubmit={SubmitForm}>
           <div className="form-group d-flex flex-column justify-items-center align-items-center">
             <div className="d-flex flex-column position-relative text-center align-items-center">
-              <img src={!photo ? data.photo : image} alt="img" className="preview-image" style={{width: '380px', height: '230px'}}/>
+              <img src={!photo ? menuId.photo : image} alt="img" className="preview-image" style={{width: '380px', height: '230px'}}/>
               <input type="file" onChange={handlePhoto} className="form-control-file mt-2" name="photo" />
             </div>
           </div>

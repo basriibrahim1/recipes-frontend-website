@@ -1,13 +1,18 @@
 import React from 'react'
 import Footer from '../../../utils'
 import Headers from '../../headers'
-import NavbarComponent from '../../navbar/navbarMenu'
 import { Link } from 'react-router-dom'
 
+import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
+
 const LikedComponent = () => {
+
+  const name = localStorage.getItem('name')
+
   return (
     <>
-    < NavbarComponent />
+   {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
 
     < Headers />
 

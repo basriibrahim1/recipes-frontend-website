@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import Headers from "../../headers";
 import { Link } from "react-router-dom";
 import Footer from "../../../utils";
-import axios from "axios";
 import DeleteModals from "../../../utils/modals/modalsDelete";
 import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
+import { useDispatch, useSelector } from "react-redux";
+import deleteMenuAction from "../../../storages/action/menu/deleteMenu";
+import menuPayloadAction from "../../../storages/action/menu/recipesPayload";
 
 const RecipesProfileComponent = () => {
 
-  const [data, setData] = useState([])
+  const dispatch = useDispatch()
+
+  const data = useSelector(state => state.userRecipes.data)
+  const deleteMenu = useSelector(state => state.deleteMenu)
   const [selectId, setSelectId] = useState()
 
   const [show, setShow] = useState(false);
@@ -24,47 +30,31 @@ const RecipesProfileComponent = () => {
 
  
   useEffect(() => {
-      getDataPayload()
-  },[])
+      dispatch(menuPayloadAction())
+  },[dispatch])
 
 
-  const getDataPayload = () => {
-    axios.get(process.env.REACT_APP_URL + 'user-recipes/recipes', {
-      headers:{
-        "Authorization" : process.env.REACT_APP_TOKEN
-      }
-    })
-    .then((res) => {
-      setData(res.data.data)
-      console.log(res)
-    })
-  
-    .catch(err => console.log(err))
-  }
+  useEffect(() => {
+    dispatch(menuPayloadAction())
+  },[dispatch, deleteMenu.data])
 
 
   const deleteData = async (id) => {
-    axios.delete(process.env.REACT_APP_URL + id, {
-      headers:{
-        "Authorization": process.env.REACT_APP_TOKEN
-      }
-    })
-    .then((res) => {
-      getDataPayload()
-    })
-    .catch((err) => {
-      alert('failed to delete')
-    })
+    dispatch(deleteMenuAction(id))
   }
+
+
+  const name = localStorage.getItem('name')
 
 
   return (
     <>
-      <NavbarProfileComponent />
+      {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
+      
 
       <Headers />
 
-      {data?.map((item, index) => {
+      {data?.map((item) => {
         return <div className="container mb-5" key={item.id}>
         <div className="d-flex flex-lg-row flex-column align-items-center text-lg-start text-center mt-5">
           <img className="food-product w-25" src={item.photo} alt="img" />

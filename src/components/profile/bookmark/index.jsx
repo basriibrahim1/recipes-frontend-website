@@ -1,14 +1,18 @@
 import React from 'react'
 import Footer from '../../../utils'
 import Headers from '../../headers'
-import NavbarComponent from '../../navbar/navbarMenu'
+import NavbarProfileComponent from "../../navbar/navbarProfile";
+import NavbarLandingPage from "../../navbar/navbarLandingPage";
 import { Link } from 'react-router-dom'
 
 const BookmarkComponent = () => {
+
+  const name = localStorage.getItem('name')
+
   return (
     <>
-    < NavbarComponent />
-
+    
+    {name ? <NavbarProfileComponent /> : <NavbarLandingPage />}
     < Headers />
 
     <div className='container mb-5'>
