@@ -1,6 +1,7 @@
 const initialState = {
     data: [],
-    isLoading: false
+    isLoading: false,
+    Error: null
 }
 
 export const menuPayloadReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ export const menuPayloadReducer = (state = initialState, action) => {
           return {
             ...state,
             isLoading: false,
-            data: []
+            Error: action.payload
           }
         default:
          return state

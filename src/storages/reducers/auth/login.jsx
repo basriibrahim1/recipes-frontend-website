@@ -1,5 +1,6 @@
 const initialState = {
     data: null,
+    error: null,
     isLoading: false
 }
 
@@ -13,6 +14,12 @@ const initialState = {
     } else if(action.type === 'USER_LOGIN_SUCCESS'){
         return {
             ...state,
+            isLoading: false
+        }
+    } else if(action.type === 'USER_LOGIN_FAILURE'){
+        return {
+            ...state,
+            error: action.payload,
             isLoading: false
         }
     } else {

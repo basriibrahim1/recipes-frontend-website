@@ -1,6 +1,7 @@
 const initialState = {
     data: [],
-    isLoading: true
+    isLoading: true,
+    Error: null
 }
 
 export const MenuReducers = (state = initialState, action) => {
@@ -20,7 +21,7 @@ export const MenuReducers = (state = initialState, action) => {
           return {
             ...state,
             isLoading: false,
-            data: []
+            Errror: action.payload
           }
         default:
          return state

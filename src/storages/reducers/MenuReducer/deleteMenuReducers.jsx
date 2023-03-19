@@ -1,6 +1,7 @@
 const initialState = {
     data: null,
-    isLoading: false
+    isLoading: false,
+    Error: null
 }
 
 export const deleteMenuReducer = (state = initialState, action) => {

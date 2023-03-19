@@ -1,6 +1,7 @@
 const initialState = {
     data: [],
-    isLoading: true
+    isLoading: true,
+    Error: null
 }
 
 export const idMenuReducer = (state = initialState, action) => {

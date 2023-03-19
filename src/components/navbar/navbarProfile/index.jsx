@@ -25,7 +25,7 @@ const NavbarProfileComponent = () => {
     const logout = () => {
       localStorage.clear()
       window.location.reload(false)
-      navigate('./login')
+      navigate('/login')
     }
 
 

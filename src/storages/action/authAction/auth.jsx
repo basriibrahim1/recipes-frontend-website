@@ -15,12 +15,6 @@ export const LoginUserAction = (data, navigate) => async(dispatch) => {
         dispatch({type: 'USER_LOGIN_SUCCESS', payload:user})
         navigate('/profile/recipes')
     } catch (error) {
-        const errorCode = error.response.status;
-
-        if (errorCode === 400) {
-          console.log('Wrong Email or Password');
-        } else {
-          console.log(error);
-        }
+      dispatch({type: 'USER_LOGIN_FAILURE', payload: error.response.data.message})
     }
 }

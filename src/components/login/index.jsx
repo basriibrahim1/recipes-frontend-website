@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginUserAction } from "../../storages/action/authAction/auth";
 
 
 const LoginComponent = () => {
+
+  const data = useSelector(state => state.login)
  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +45,8 @@ const LoginComponent = () => {
             <label className="form-check-label" htmlFor="terms">I agree to terms & conditions</label>
           </div>
           <button type="submit" className="button bg-warning text-white w-50 p-2 mt-3 border-0 rounded">Login</button>
+          {data.isLoading && <p className="mt-2">Please wait</p>}
+          {data.error && <p className="mt-2">Login Failed, wrong email or password</p>}
           <p className="mt-2 align-items-start w-50">Forgot your password? <Link to="/ForgotPassword" className="text-warning text-decoration-none">Click Here</Link></p>
           <p className="mt-5">Don't have an account? <Link to="/register" className="text-warning text-decoration-none">Sign Up</Link></p>
         </form>
