@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUserAction } from '../../storages/action/authAction/registerAction';
@@ -28,6 +28,11 @@ const RegisterComponent = () => {
     handleOpen()
   }
 
+
+  useEffect(() => {
+    document.title = 'Recipes Clubs';
+  }, []);
+
   return (
     <section>
       <div className="register-container container d-flex flex-column justify-items-center align-items-center vh-100">
@@ -54,7 +59,7 @@ const RegisterComponent = () => {
           <input className="form-control h-70" id="password" name="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <div className="form-check d-flex w-50 mt-4">
-          <input className="form-check-input me-2 text-warning" type="checkbox" id="terms" name="terms" />
+          <input className="form-check-input me-2 text-warning" type="checkbox" id="terms" name="terms" required title='Please agree terms and condition to continue'/>
           <label className="form-check-label" htmlFor="terms">
             I agree to terms & conditions
           </label>

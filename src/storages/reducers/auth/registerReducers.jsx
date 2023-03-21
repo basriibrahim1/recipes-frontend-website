@@ -15,7 +15,8 @@ const initialState = {
     } else if(action.type === 'USER_REGISTER_SUCCESS'){
         return {
             ...state,
-            isLoading: false
+            newError: null,
+            isLoading: true
         }
     } else if(action.type === 'USER_REGISTER_FAILURE'){
         return {

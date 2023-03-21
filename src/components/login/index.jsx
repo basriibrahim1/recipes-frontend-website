@@ -41,7 +41,7 @@ const LoginComponent = () => {
             <input className="form-control h-50" name="password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <div className="form-check d-flex w-50 mt-3">
-            <input className="form-check-input me-2 text-warning" type="checkbox" id="terms" name="terms" />
+            <input className="form-check-input me-2 text-warning" type="checkbox" id="terms" name="terms" required/>
             <label className="form-check-label" htmlFor="terms">I agree to terms & conditions</label>
           </div>
           <button type="submit" className="button bg-warning text-white w-50 p-2 mt-3 border-0 rounded">Login</button>
