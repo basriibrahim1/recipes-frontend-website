@@ -66,9 +66,8 @@ const RegisterComponent = () => {
           Register Account
         </button>
         {data.isLoading && <p className="mt-2">Please wait</p>}
-        {data.NewError === 'Incorrect Email Or Password' && <p>Incorrect Email Or Password</p>}
-        {data.NewError === 'Email has been used, please register with another email' && <p>Email has been used, please register with another email</p>}
-        <ModalsRegister show={show} handleClose={handleClose} />
+        {data.newError && <p className='mt-3'>{data.newError}</p>}
+        {!data.newError && <ModalsRegister show={show} handleClose={handleClose} />}
         </form>
         <p className="mb-0 mt-5">
           Already have account? <Link to="/login" className="text-warning text-decoration-none">Login Here</Link>

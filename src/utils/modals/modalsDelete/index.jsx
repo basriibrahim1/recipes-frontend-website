@@ -9,7 +9,6 @@ const DeleteModals = (props) => {
 
   return (
     <>
-    
     <Modal show={show} onHide={()=>handleClose()} className="d-flex justify-content-center align-items-center text-center">
         <Modal.Header closeButton>
         </Modal.Header>
@@ -21,7 +20,6 @@ const DeleteModals = (props) => {
             handleClose()}}> Delete data</Button>
         </Modal.Footer>
       </Modal>
-
     </>
   )
 }

@@ -9,13 +9,12 @@ const initialState = {
     if(action.type === 'USER_REGISTER_PENDING'){
         return {
             ...state,
-            newError: action.payload,
+            newError: null,
             isLoading: true
         }
     } else if(action.type === 'USER_REGISTER_SUCCESS'){
         return {
             ...state,
-            newError: action.payload,
             isLoading: false
         }
     } else if(action.type === 'USER_REGISTER_FAILURE'){
