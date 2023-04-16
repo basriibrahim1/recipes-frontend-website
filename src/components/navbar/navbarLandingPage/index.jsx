@@ -6,22 +6,22 @@ import { Link } from "react-router-dom";
 const NavbarLandingPage = () => {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className='mt-5'>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-5 mt-2" />
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-between ms-5">
+      <Navbar collapseOnSelect expand="lg" >
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse id="responsive-navbar-nav" className="ms-5">
           <Nav>
             <Nav.Item className="me-5">
-              <Link to="/register" className="nav-link">
+              <Link to="/register" className="nav-link fs-5 fw-bold">
                 Register
               </Link>
             </Nav.Item>
             <Nav.Item className="me-5">
-              <Link to="/login" className="nav-link">
+              <Link to="/login" className="nav-link fs-5 fw-bold">
                 Login
               </Link>
             </Nav.Item>
             <Nav.Item className="me-5">
-              <Link to="/menu" className="nav-link">
+              <Link to="/menu" className="nav-link fs-5 fw-bold">
                 Search Menu
               </Link>
             </Nav.Item>

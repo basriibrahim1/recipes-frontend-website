@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ForgotPasswordComponent = () => {
   return (
-    <section>
+    <>
       <div className="login-container container">
         <div className="d-flex flex-column vh-100 align-items-center">
           <h3 className="text-center text-warning mt-5">Recipes...</h3>
@@ -19,7 +19,7 @@ const ForgotPasswordComponent = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   )
 }
 

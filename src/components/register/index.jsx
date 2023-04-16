@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUserAction } from '../../storages/action/authAction/registerAction';
@@ -27,11 +27,6 @@ const RegisterComponent = () => {
     await dispatch(RegisterUserAction({...data}))
     handleOpen()
   }
-
-
-  useEffect(() => {
-    document.title = 'Recipes Clubs';
-  }, []);
 
   return (
     <section>
