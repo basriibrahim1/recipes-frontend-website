@@ -9,12 +9,14 @@ const initialState = {
     if(action.type === 'USER_LOGIN_PENDING'){
         return {
             ...state,
-            isLoading: true
+            isLoading: true,
+            error: null
         }
     } else if(action.type === 'USER_LOGIN_SUCCESS'){
         return {
             ...state,
-            isLoading: false
+            isLoading: false,
+            error: null
         }
     } else if(action.type === 'USER_LOGIN_FAILURE'){
         return {

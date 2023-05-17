@@ -20,7 +20,6 @@ const ForgotPassword = () => {
         </div>
         </div>
     </>
-    
   )
 }
 
