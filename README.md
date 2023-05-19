@@ -95,7 +95,7 @@ npm install
 
 ## Related Project
 
-- [`BACKEND Recipes-Clubs`](https://github.com/basriibrahim1/recipes-backend)
+- [`BACKEND Recipes-Clubs`](https://github.com/basriibrahim1/recipe-backend)
 - [`FRONTEND Recipes-Clubs Mobile`](https://github.com/basriibrahim1/recipes-RN)
 
 
