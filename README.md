@@ -1,7 +1,7 @@
-<h1 align="center">Recipes Club Application</h1>
+<h1 align="center">Recipes Club Website</h1>
 
 <p align="center">
-  <img height="150" src="https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/logo.png"  />
+  <img height="150" src="https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/logo.png"  />
 </p>
  <p align="center">
     Find your best recipes everyday
@@ -28,7 +28,7 @@
     </li>
     <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#related-project">Related Project</a></li>
-    <li><a href="#our-team">Our Team</a></li>
+    <li><a href="#author">Author</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -59,13 +59,13 @@ This app was built with some technologies below:
 - Clone This Front End Repo
 
 ```
-git clone https://github.com/basriibrahim1/recipes-RN
+git clone https://github.com/basriibrahim1/recipes-frontend-website
 ```
 
 - Go To Folder Repo
 
 ```
-cd recipes-RN
+cd recipes-frontend-website
 ```
 
 - Install Module
@@ -78,25 +78,25 @@ npm install
 
 |Register User Page| Login User Page | 
 | ------------ | ------------|
-![Register](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/register.PNG "Register Pekerja Page") | ![Login](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/login.PNG "Login Page")
+![Register](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/register.PNG "Register Page") | ![Login](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/login.PNG "Login Page")
                                                                         
-| Home Page |
- ------------- |
-![home](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/home.PNG) |
+| Landing Page | Home Page |
+| -------------- | ------------- |
+![Landing](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/landing.PNG) | ![home](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/home.PNG) |
 
 | Detail Recipes | User Recipes |
 | ------------- | ----------- |
-| ![Details](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/detail.PNG) | ![Payload](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/myrecipe.PNG)
+| ![Details](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/detail.PNG) | ![Payload](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/recipes.PNG)
 
 | Add Recipes |
 | ------------- |
-| ![Add](https://github.com/basriibrahim1/recipes-RN/blob/main/src/ss/add.PNG)
+| ![Add](https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/add.PNG)
 
 
 ## Related Project
 
-- [`BACKEND Ankasa Flight`](https://github.com/basriibrahim1/ankasa-backend)
-- [`FRONTEND Ankasa Flight`](https://github.com/basriibrahim1/ankasa-fe-next)
+- [`BACKEND Recipes-Clubs`](https://github.com/basriibrahim1/recipes-backend)
+- [`FRONTEND Recipes-Clubs Mobile`](https://github.com/basriibrahim1/recipes-RN)
 
 
 ## Author
