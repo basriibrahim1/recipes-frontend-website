@@ -1,7 +1,7 @@
 <h1 align="center">Recipes Club Website</h1>
 
 <p align="center">
-  <img height="150" src="https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/logo.png"  />
+  <img height="150" src="https://github.com/basriibrahim1/recipes-frontend-website/blob/main/src/ss/logo.PNG"  />
 </p>
  <p align="center">
     Find your best recipes everyday
@@ -95,7 +95,7 @@ npm install
 
 ## Related Project
 
-- [`BACKEND Recipes-Clubs`](https://github.com/basriibrahim1/recipes-backend)
+- [`BACKEND Recipes-Clubs`](https://github.com/basriibrahim1/recipe-backend)
 - [`FRONTEND Recipes-Clubs Mobile`](https://github.com/basriibrahim1/recipes-RN)
 
 
