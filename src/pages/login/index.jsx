@@ -31,11 +31,11 @@ function Login() {
           <h5 className="mt-5 text-secondary">Log in into your existing account</h5>
         <form onSubmit={handleSubmit} className='w-100 align-items-center justify-content-center d-flex flex-column'>
           <div className="col-lg-6 col-8 mt-5">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label">Email || bocil@gmail.com</label>
             <input className="form-control" name="email" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
           <div className="col-lg-6 col-8 mt-2">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">Password || 123</label>
             <input className="form-control h-50" name="password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           </div>
           <div className="form-check d-flex col-lg-6 col-8 mt-3">
